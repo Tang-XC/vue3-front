@@ -5,3 +5,15 @@ const { width } = useWindowSize()
 export const isMobileDevice = computed(() => {
   return width.value < PC_DEVICE_WIDTH
 })
+
+export const useREM = () => {
+  const MAX_FONT_SIZE = 40
+  document.addEventListener('DOMContentLoaded', () => {
+    const html = document.querySelector('html')
+    let fontSize = window.innerWidth / 10
+    if (fontSize > MAX_FONT_SIZE) {
+      fontSize = MAX_FONT_SIZE
+    }
+    html.style.fontSize = fontSize + 'px'
+  })
+}
