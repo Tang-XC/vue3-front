@@ -1,7 +1,8 @@
 <template>
   <div class="bg-white sticky top-0 left-0 z-10">
     <ul
-      class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden"
+      class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden no-scrollbar"
+      ref="sliderRef"
     >
       <!-- 导航栏滑块 -->
       <li
@@ -20,8 +21,10 @@
         ref="sliderItem"
         v-for="item in data"
         :key="item.id"
+        :index="item.id"
+        :id="item.id"
         class="slider-item shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
-        :class="{ 'text-zinc-100': item.id === currentCategory.id }"
+        :class="{ 'text-zinc-100': item.id === active }"
         @click="handleClick($event, item)"
       >
         {{ item.name }}
@@ -30,25 +33,34 @@
   </div>
 </template>
 <script setup>
-import { onMounted, onUpdated, ref, watch } from 'vue'
-import { ALL_CATEGORY_ITEM } from '@/constants'
+import { onUpdated, ref, watch } from 'vue'
+import { useVModel, useScroll } from '@vueuse/core'
 import _ from 'lodash'
-const { data } = defineProps({
+const props = defineProps({
   data: {
     type: Array,
     default: () => []
+  },
+  modelValue: {
+    type: String,
+    default: ''
   }
 })
+const emit = defineEmits(['onSelect'])
 const sliderTarget = ref(null)
 const sliderItem = ref(null)
-const currentCategory = ref(ALL_CATEGORY_ITEM)
+const sliderRef = ref(null)
+const { x, y } = useScroll(sliderRef)
+const active = useVModel(props, 'modelValue')
+
 const handleClick = (event, item) => {
   // 点击分类时滑动滑块
   if (Array.from(event.target.classList).includes('slider-item')) {
     sliderMove(sliderTarget.value, event.target)
   }
   // 给当前选中分类赋值
-  currentCategory.value = item
+  active.value = item.id
+  emit('onSelect', item.id)
 }
 
 // 移动滑块
@@ -58,17 +70,23 @@ const sliderMove = (a, b) => {
 }
 
 // 初始化滑块位置,只执行一次
-const init = _.once(() => {
-  const firstItem = document.querySelector('.slider-item')
+const initFunc = () => {
+  const firstItem = document.querySelector(`#${active.value}`)
   if (sliderTarget.value && firstItem) {
     sliderMove(sliderTarget.value, firstItem)
+    if (firstItem.offsetLeft > window.innerWidth / 2) {
+      x.value = firstItem.offsetLeft - sliderRef.value.offsetWidth / 2
+    } else {
+      x.value = 0
+    }
   }
-})
+}
+const init = _.once(initFunc)
 onUpdated(() => {
   init()
 })
+watch(active, (value) => {
+  initFunc()
+})
 </script>
-<style lang="scss" scoped>
-.sliderTarget {
-}
-</style>
+<style lang="scss" scoped></style>
