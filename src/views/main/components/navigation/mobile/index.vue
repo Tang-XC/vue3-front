@@ -11,17 +11,18 @@
       <!-- 导航栏更多按钮 -->
       <li
         class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white z-20 shadow-l-white"
+        v-if="$slots.more"
       >
-        <SvgIcon name="more" class="w-1.5 h-1.5" />
+        <slot name="more"></slot>
       </li>
       <!-- 导航栏分类 -->
       <li
         ref="sliderItem"
-        v-for="(item, index) in data"
+        v-for="item in data"
         :key="item.id"
         class="slider-item shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
-        :class="{ 'text-zinc-100': index === currentCategory }"
-        @click="handleClick($event, index)"
+        :class="{ 'text-zinc-100': item.id === currentCategory.id }"
+        @click="handleClick($event, item)"
       >
         {{ item.name }}
       </li>
@@ -30,6 +31,7 @@
 </template>
 <script setup>
 import { onMounted, onUpdated, ref, watch } from 'vue'
+import { ALL_CATEGORY_ITEM } from '@/constants'
 import _ from 'lodash'
 const { data } = defineProps({
   data: {
@@ -39,7 +41,7 @@ const { data } = defineProps({
 })
 const sliderTarget = ref(null)
 const sliderItem = ref(null)
-const currentCategory = ref(0)
+const currentCategory = ref(ALL_CATEGORY_ITEM)
 const handleClick = (event, item) => {
   // 点击分类时滑动滑块
   if (Array.from(event.target.classList).includes('slider-item')) {
