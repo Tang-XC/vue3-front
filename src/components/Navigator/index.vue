@@ -14,6 +14,7 @@
 import MobileNavigator from './mobile/index.vue'
 import PcNavigator from './pc/index.vue'
 import { useVModel } from '@vueuse/core'
+import { EMIT_UPDATE_MODELVALUE } from '@/constants'
 const props = defineProps({
   type: {
     type: String,
@@ -24,7 +25,8 @@ const props = defineProps({
     reuqired: true
   }
 })
-const active = useVModel(props, 'modelValue')
+const emit = defineEmits([EMIT_UPDATE_MODELVALUE])
+const active = useVModel(props)
 const handleSelect = (val) => {
   active.value = val
 }

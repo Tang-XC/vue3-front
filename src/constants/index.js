@@ -3,3 +3,4 @@ export const ALL_CATEGORY_ITEM = {
   id: 'all',
   name: '全部'
 }
+export const EMIT_UPDATE_MODELVALUE = 'update:modelValue'

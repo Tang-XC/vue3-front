@@ -28,6 +28,7 @@
 </template>
 <script setup>
 import { useScrollLock, useVModel } from '@vueuse/core'
+import { EMIT_UPDATE_MODELVALUE } from '@/constants'
 import { watch } from 'vue'
 const props = defineProps({
   modelValue: {
@@ -39,7 +40,8 @@ const props = defineProps({
     default: 'bottom'
   }
 })
-const isVisible = useVModel(props, 'modelValue')
+const emit = defineEmits([EMIT_UPDATE_MODELVALUE])
+const isVisible = useVModel(props)
 const isLocked = useScrollLock(document.body)
 const closePopup = () => {
   isVisible.value = false

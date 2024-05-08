@@ -35,6 +35,8 @@
 <script setup>
 import { onUpdated, ref, watch } from 'vue'
 import { useVModel, useScroll } from '@vueuse/core'
+import { EMIT_UPDATE_MODELVALUE } from '@/constants'
+
 import _ from 'lodash'
 const props = defineProps({
   data: {
@@ -46,12 +48,12 @@ const props = defineProps({
     default: ''
   }
 })
-const emit = defineEmits(['onSelect'])
+const emit = defineEmits(['onSelect', EMIT_UPDATE_MODELVALUE])
 const sliderTarget = ref(null)
 const sliderItem = ref(null)
 const sliderRef = ref(null)
 const { x, y } = useScroll(sliderRef)
-const active = useVModel(props, 'modelValue')
+const active = useVModel(props)
 
 const handleClick = (event, item) => {
   // 点击分类时滑动滑块
