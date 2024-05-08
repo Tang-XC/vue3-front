@@ -2,7 +2,7 @@
   <PopOver placement="bottom-right">
     <template #reference>
       <div>
-        <SvgIcon name="user-fill" class="w-3 h-3" />
+        <SvgIcon name="user-fill" class="w-3 h-3 dark:fill-zinc-300" />
       </div>
     </template>
     <div class="w-14">

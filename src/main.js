@@ -5,9 +5,12 @@ import { useREM } from '@/utils/flexible'
 import Components from '@/components'
 import installFilters from '@/plugins/filters'
 import store from '@/store'
+import useTheme from '@/utils/theme'
+
 import './style/index.scss'
 import 'virtual:svg-icons-register'
 useREM()
+useTheme()
 const app = createApp(App).use(router).use(Components).use(store)
 installFilters(app)
 app.mount('#app')

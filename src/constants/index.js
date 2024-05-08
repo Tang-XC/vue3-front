@@ -1,3 +1,6 @@
+export const THEME_LIGHT = 'light'
+export const THEME_DARK = 'dark'
+export const THEME_SYSTEM = 'system'
 export const EMIT_UPDATE_MODELVALUE = 'update:modelValue'
 export const EMIT_SEARCH = 'search'
 export const EMIT_CLEAR = 'clear'
@@ -26,16 +29,19 @@ export const ALL_CATEGORY_ITEM = {
 export const THEME_DROPDOWN_LIST = [
   {
     name: '极夜白',
+    type: THEME_LIGHT,
     icon: 'sun',
     value: 0
   },
   {
     name: '极夜黑',
+    type: THEME_DARK,
     icon: 'moon',
     value: 1
   },
   {
     name: '跟随系统',
+    type: THEME_SYSTEM,
     icon: 'colorPalette',
     value: 2
   }

@@ -7,7 +7,7 @@
     >
       <template #more>
         <div @click="openMore">
-          <SvgIcon name="more" class="w-1.5 h-1.5" />
+          <SvgIcon name="more" class="w-1.5 h-1.5 dark:fill-zinc-300" />
         </div>
       </template>
     </Navigator>

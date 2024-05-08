@@ -1,16 +1,16 @@
 <template>
   <div
-    class="group flex h-[44px] relative justify-between items-center border-white rounded-xl"
+    class="group flex h-[44px] relative justify-between items-center border-white dark:bg-zinc-900 rounded-xl dark:border-zinc-200"
     ref="searchRef"
   >
     <div class="flex mx-2 z-10">
-      <SvgIcon name="search" class="w-2 h-2" />
+      <SvgIcon name="search" class="w-2 h-2 dark:fill-zinc-300" />
     </div>
     <div class="flex-1 text-base">
       <input
         type="text"
         placeholder="搜索"
-        class="w-full block absolute h-[44px] top-0 left-0 outline-0 caret-zinc-400 border border-zinc-100 bg-zinc-100 px-5 focus:shadow-lg hover:bg-white hover:border-zinc-200 hover:shadow-sm rounded-xl"
+        class="w-full block absolute h-[44px] top-0 left-0 outline-0 caret-zinc-400 border border-zinc-100 bg-zinc-100 px-5 focus:shadow-lg hover:bg-white hover:border-zinc-200 hover:shadow-sm rounded-xl dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-300 dark:group-hover:bg-zinc-900 dark:group-hover:border-zinc-700"
         v-model="searchValue"
         @keyup.enter="onSearch"
         @focus="onFocus"
@@ -20,7 +20,7 @@
     <div class="flex mx-[6px] items-center z-10">
       <div
         v-show="searchValue && searchValue.length > 0"
-        class="border-r border-zinc-200 mr-1 pr-1"
+        class="border-r border-zinc-200 dark:border-zinc-700 mr-1 pr-1"
         @click="onSearchClear"
       >
         <SvgIcon
@@ -47,7 +47,7 @@
       <div
         v-if="$slots.dropdown"
         v-show="isFocus"
-        class="max-h-[368px] w-full text-base overflow-auto bg-white absolute z-20 left-0 top-[56px] p-2 rounded border border-zinc-200 duration-200 hover:shadow-2xl"
+        class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute z-20 left-0 top-[56px] p-2 rounded border border-zinc-200 duration-200 hover:shadow-2xl dark:border-zinc-600"
       >
         <slot name="dropdown"></slot>
       </div>

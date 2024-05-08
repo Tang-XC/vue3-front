@@ -8,7 +8,7 @@
         <div
           ref="contentRef"
           v-show="isVisible"
-          class="absolute p-1 z-20 bg-white border rounded-md"
+          class="absolute p-1 z-20 bg-white dark:bg-zinc-900 border rounded-md dark:border-zinc-700"
         >
           <slot></slot>
         </div>

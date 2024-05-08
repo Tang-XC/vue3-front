@@ -12,20 +12,20 @@
           v-if="isExpand"
           class="w-1 h-1"
           name="arrowDown"
-          fillClass="fill-zinc-900"
+          fillClass="fill-zinc-900 dark:fill-zinc-300"
         />
         <SvgIcon
           v-else
           class="w-1 h-1"
           name="arrowUp"
-          fillClass="fill-zinc-900"
+          fillClass="fill-zinc-900 dark:fill-zinc-300"
         />
       </div>
       <div>
         <transition name="opacity">
           <li
             v-if="selectedItem && !isExpand"
-            class="text-sm ml-1 bg-zinc-900 rounded-lg px-1 py-0.5 text-zinc-50"
+            class="text-sm ml-1 bg-zinc-900 dark:bg-zinc-800 rounded-lg px-1 py-0.5 text-zinc-50"
           >
             {{ selectedItem }}
           </li>
@@ -34,13 +34,13 @@
     </div>
     <li
       ref="sliderTarget"
-      class="absolute h-4 bg-zinc-900 rounded-lg duration-200"
+      class="absolute h-4 bg-zinc-900 rounded-lg duration-200 dark:bg-zinc-800"
     ></li>
     <li
       v-for="item in data"
       :key="item.id"
       :id="item.id"
-      class="slider-item shrink-0 px-1.5 py-0 z-20 duration-200 text-base font-bold h-4 leading-4 cursor-pointer hover:text-zinc-900 rounded mr-1 mb-1"
+      class="slider-item shrink-0 px-1.5 py-0 z-20 duration-200 text-base font-bold h-4 leading-4 cursor-pointer hover:text-zinc-900 rounded mr-1 mb-1 dark:text-zinc-500"
       :class="{ 'slider-item-active': item.id === active }"
       @click="handleClick($event, item)"
     >

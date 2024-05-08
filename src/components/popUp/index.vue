@@ -12,7 +12,7 @@
         <div
           v-if="isVisible"
           v-bind="$attrs"
-          class="z-50 fixed bg-white"
+          class="z-50 fixed bg-white dark:bg-zinc-800"
           :class="{
             'top-base': position === 'top',
             'bottom-base': position === 'bottom',
