@@ -8,7 +8,7 @@
       <slot name="more"></slot>
     </template>
   </MobileNavigator>
-  <PcNavigator v-else></PcNavigator>
+  <PcNavigator v-model="active" @onSelect="handleSelect" v-else></PcNavigator>
 </template>
 <script setup>
 import MobileNavigator from './mobile/index.vue'

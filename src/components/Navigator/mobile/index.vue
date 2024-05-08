@@ -18,7 +18,6 @@
       </li>
       <!-- 导航栏分类 -->
       <li
-        ref="sliderItem"
         v-for="item in data"
         :key="item.id"
         :index="item.id"
@@ -50,7 +49,6 @@ const props = defineProps({
 })
 const emit = defineEmits(['onSelect', EMIT_UPDATE_MODELVALUE])
 const sliderTarget = ref(null)
-const sliderItem = ref(null)
 const sliderRef = ref(null)
 const { x, y } = useScroll(sliderRef)
 const active = useVModel(props)
