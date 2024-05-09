@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen overflow-hidden">
     <Header class="h-header" />
     <Main class="h-main" />
     <Floating />
@@ -9,7 +9,7 @@
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 import Header from './components/header/index.vue'
-import Main from './components/main/index.vue'
+import Main from '@/views/main/index.vue'
 import Floating from './components/floating/index.vue'
 const store = useStore()
 onMounted(() => {

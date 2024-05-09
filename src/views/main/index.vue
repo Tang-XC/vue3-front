@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="h-full overflow-auto dark:bg-zinc-900">
     <Navigator
-      type="mobile"
+      :type="isMobileDevice ? 'mobild' : 'pc'"
       :data="store.getters.categories"
       v-model="activeCategory"
     >
@@ -11,6 +11,9 @@
         </div>
       </template>
     </Navigator>
+    <div class="max-w-screen-xl mx-auto relative m-1 xl:mt-4">
+      <PexelsList />
+    </div>
   </div>
   <PopUp v-model="showMore" position="top">
     <CategoryMenu
@@ -25,6 +28,8 @@ import CategoryMenu from './components/CategoryMenu/index.vue'
 import { onMounted, ref } from 'vue'
 import { ALL_CATEGORY_ITEM } from '@/constants'
 import { useStore } from 'vuex'
+import PexelsList from './pexelsList/index.vue'
+import { isMobileDevice } from '@/utils/flexible.js'
 
 const showMore = ref(false)
 const activeCategory = ref(ALL_CATEGORY_ITEM.id)
