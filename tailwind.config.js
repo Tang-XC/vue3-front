@@ -17,7 +17,7 @@ export default {
       },
       height: {
         pcHeader: '72px',
-        pcMain: 'calc(100vh-72px)'
+        pcMain: 'calc(100vh - 72px)'
       },
       colors: {
         main: '#f44c58',

@@ -1,9 +1,10 @@
 <template>
   <div>
     <WaterFall
+      class="px-1 w-full"
       :data="pexelsList"
       nodeKey="id"
-      :column="5"
+      :column="column"
       :picturePreReading="true"
     >
       <template v-slot="{ item, width }">
@@ -16,6 +17,12 @@
 import { onMounted, ref } from 'vue'
 import { getPexelsList } from '@/api/pexels'
 import PicCard from '../components/PicCard/index.vue'
+const { column } = defineProps({
+  column: {
+    type: Number,
+    default: 5
+  }
+})
 const pexelsList = ref([])
 const params = {
   page: 1,

@@ -106,7 +106,7 @@ watch(active, (value) => {
   initFunc()
 })
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .slider-item-active {
   --tw-text-opacity: 1 !important;
   color: rgb(244 244 245 / var(--tw-text-opacity)) !important;

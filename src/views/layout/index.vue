@@ -1,7 +1,9 @@
 <template>
-  <div class="h-screen overflow-hidden">
-    <Header class="h-header" />
-    <Main class="h-main" />
+  <div class="h-screen">
+    <Header class="h-pcHeader" />
+    <div class="h-pcMain">
+      <Main />
+    </div>
     <Floating />
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="h-full overflow-auto dark:bg-zinc-900">
     <Navigator
-      :type="isMobileDevice ? 'mobild' : 'pc'"
+      :type="isMobileDevice ? 'mobile' : 'pc'"
       :data="store.getters.categories"
       v-model="activeCategory"
     >
@@ -12,7 +12,7 @@
       </template>
     </Navigator>
     <div class="max-w-screen-xl mx-auto relative m-1 xl:mt-4">
-      <PexelsList />
+      <PexelsList :column="isMobileDevice ? 2 : 5" />
     </div>
   </div>
   <PopUp v-model="showMore" position="top">

@@ -1,11 +1,9 @@
 <template>
-  <div
-    class="bg-whtie dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1 w-[230px]"
-  >
+  <div class="bg-whtie dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
     <div class="relative w-full rounded cursor-zoom-in group">
       <img :src="data.photo" class="w-full rounded bg-transparent" />
       <div
-        class="opacity-0 w-full h-full bg-zinc-900/50 absolute top-0 left-0 duration-300 group-hover:opacity-100 xl:flex flex-col justify-between p-1"
+        class="opacity-0 w-full h-full bg-zinc-900/50 absolute top-0 left-0 duration-300 group-hover:opacity-100 hidden xl:flex flex-col justify-between p-1"
       >
         <div class="flex justify-between">
           <div>

@@ -205,6 +205,7 @@ const increasingHeight = (index) => {
   const minHeightCloumn = getMinHeightColumn(columnHeightObj.value)
   columnHeightObj.value[minHeightCloumn] +=
     itemHeights.value[index] + props.rowSpacing
+  console.log(columnHeightObj.value)
 }
 watch(
   () => props.data,
