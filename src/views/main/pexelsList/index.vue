@@ -33,7 +33,8 @@ const isFinished = ref(false)
 const params = ref({
   page: 1,
   size: 20,
-  categoryId: store.getters.currentCategory
+  categoryId: store.getters.currentCategory,
+  searchText: store.getters.currentSearch
 })
 const getData = () => {
   if (isFinished.value) return
@@ -60,6 +61,15 @@ watch(
     resetParams({
       page: 1,
       categoryId: val
+    })
+  }
+)
+watch(
+  () => store.getters.currentSearch,
+  (val) => {
+    resetParams({
+      page: 1,
+      searchText: val
     })
   }
 )

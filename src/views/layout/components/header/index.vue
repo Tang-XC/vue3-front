@@ -4,7 +4,7 @@
   >
     <div class="flex justify-items-center items-center">
       <Logo />
-      <Search class="flex-1" v-model="searchValue">
+      <Search class="flex-1" v-model="searchValue" @search="goSearch">
         <template #dropdown>
           <Hint
             :searchText="searchValue"
@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useStore } from 'vuex'
 import Logo from './components/logo/index.vue'
 import Search from './components/search/index.vue'
@@ -31,7 +31,16 @@ import History from './components/search/history.vue'
 const searchValue = ref('')
 const store = useStore()
 const handleClick = (val) => {
-  searchValue.value = val
+  console.log(val)
+  searchValue.value = ''
   store.commit('search/addHistory', val)
+  store.commit('search/setCurrentSearch', val)
+}
+const goSearch = () => {
+  if (searchValue.value) {
+    store.commit('search/addHistory', searchValue.value)
+    store.commit('search/setCurrentSearch', searchValue.value)
+    searchValue.value = ''
+  }
 }
 </script>

@@ -1,7 +1,8 @@
 export default {
   namespaced: true,
   state: {
-    history: []
+    history: [],
+    currentSearch: ''
   },
   mutations: {
     addHistory(state, payload) {
@@ -15,6 +16,9 @@ export default {
     },
     clearHistory(state) {
       state.history = []
+    },
+    setCurrentSearch(state, payload) {
+      state.currentSearch = payload
     }
   },
   actions: {}
