@@ -11,7 +11,7 @@
     </div>
     <div class="flex mt-1.5 flex-wrap">
       <div
-        class="flex items-center bg-zinc-200 mr-2 rounded-sm py-0.5 px-1 cursor-pointer"
+        class="flex items-center bg-zinc-200 mr-2 rounded-sm py-0.5 px-1 cursor-pointer mb-1"
         v-for="item in store.getters.history"
         @click="handleClick(item)"
       >
@@ -31,6 +31,8 @@
 <script setup>
 import { useStore } from 'vuex'
 import { EMIT_CLICK } from '@/constants'
+import { confirm } from '@/components'
+
 const store = useStore()
 const emit = defineEmits([EMIT_CLICK])
 const handleClick = (item) => {
@@ -40,6 +42,8 @@ const handleRemove = (item) => {
   store.commit('search/removeHistory', item)
 }
 const handleClear = () => {
-  store.commit('search/clearHistory')
+  confirm('提示', '确定清空历史记录吗？').then(() => {
+    store.commit('search/clearHistory')
+  })
 }
 </script>

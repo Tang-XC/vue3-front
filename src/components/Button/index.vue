@@ -49,6 +49,9 @@ const sizeEnum = {
 </script>
 <script setup>
 import { computed } from 'vue'
+import SvgIcon from '../SvgIcon/index.vue'
+import Loading from '../Loading/index.vue'
+import { EMIT_CLICK } from '@/constants'
 
 const props = defineProps({
   icon: String,
@@ -87,12 +90,12 @@ const props = defineProps({
     default: false
   }
 })
-const emits = defineEmits(['EMITS_CLICK'])
+const emits = defineEmits([EMIT_CLICK])
 const sizeKey = computed(() => {
   return props.icon ? 'icon-' + props.size : props.size
 })
 const onBtnClick = () => {
   if (props.loading) return
-  emits(EMITS_CLICK)
+  emits(EMIT_CLICK)
 }
 </script>

@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup>
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import Logo from './components/logo/index.vue'
 import Search from './components/search/index.vue'
