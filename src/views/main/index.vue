@@ -25,15 +25,14 @@
 </template>
 <script setup>
 import CategoryMenu from './components/CategoryMenu/index.vue'
-import { onMounted, ref } from 'vue'
-import { ALL_CATEGORY_ITEM } from '@/constants'
+import { onMounted, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import PexelsList from './pexelsList/index.vue'
 import { isMobileDevice } from '@/utils/flexible.js'
+const store = useStore()
 
 const showMore = ref(false)
-const activeCategory = ref(ALL_CATEGORY_ITEM.id)
-const store = useStore()
+const activeCategory = ref(store.getters.currentCategory)
 
 const openMore = () => {
   showMore.value = true
@@ -46,5 +45,8 @@ const handleMenuSelect = (val) => {
 }
 onMounted(() => {
   store.dispatch('category/useCategoryData')
+})
+watch(activeCategory, (val) => {
+  store.commit('category/setCurrentCategory', val)
 })
 </script>

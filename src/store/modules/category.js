@@ -3,11 +3,15 @@ import { getCategory } from '@/api/category'
 export default {
   namespaced: true,
   state: () => ({
-    categories: [ALL_CATEGORY_ITEM]
+    categories: [ALL_CATEGORY_ITEM],
+    currentCategory: ALL_CATEGORY_ITEM.id
   }),
   mutations: {
     setCategory(state, newCategories) {
       state.categories = [ALL_CATEGORY_ITEM, ...newCategories]
+    },
+    setCurrentCategory(state, newCategory) {
+      state.currentCategory = newCategory
     }
   },
   actions: {

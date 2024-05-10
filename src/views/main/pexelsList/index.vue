@@ -16,9 +16,11 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { getPexelsList } from '@/api/pexels'
 import PicCard from '../components/PicCard/index.vue'
+import { useStore } from 'vuex'
+const store = useStore()
 const { column } = defineProps({
   column: {
     type: Number,
@@ -30,7 +32,8 @@ const loading = ref(false)
 const isFinished = ref(false)
 const params = ref({
   page: 1,
-  size: 20
+  size: 20,
+  categoryId: store.getters.currentCategory
 })
 const getData = () => {
   if (isFinished.value) return
@@ -45,4 +48,19 @@ const getData = () => {
     loading.value = false
   })
 }
+const resetParams = (val) => {
+  params.value.page = val.page
+  params.value.categoryId = val.categoryId
+  pexelsList.value = []
+  isFinished.value = false
+}
+watch(
+  () => store.getters.currentCategory,
+  (val) => {
+    resetParams({
+      page: 1,
+      categoryId: val
+    })
+  }
+)
 </script>
