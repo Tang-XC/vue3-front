@@ -1,12 +1,15 @@
 import { useIntersectionObserver } from '@vueuse/core'
 export default {
-  mounted(el) {
+  mounted(el, binding) {
     const temp = el.src
     el.src = ''
-    el.style.background = 'red'
+    //更改data-*
     const { stop } = useIntersectionObserver(el, ([{ isIntersecting }]) => {
       if (isIntersecting) {
-        el.src = temp
+        setTimeout(() => {
+          el.src = temp
+          el.setAttribute('data-test', 'yes')
+        }, 1000)
         stop()
       }
     })

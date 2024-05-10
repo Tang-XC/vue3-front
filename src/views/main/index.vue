@@ -25,7 +25,7 @@
 </template>
 <script setup>
 import CategoryMenu from './components/CategoryMenu/index.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ALL_CATEGORY_ITEM } from '@/constants'
 import { useStore } from 'vuex'
 import PexelsList from './pexelsList/index.vue'
@@ -44,4 +44,7 @@ const closeMore = () => {
 const handleMenuSelect = (val) => {
   activeCategory.value = val
 }
+onMounted(() => {
+  store.dispatch('category/useCategoryData')
+})
 </script>
