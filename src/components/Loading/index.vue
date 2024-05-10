@@ -1,5 +1,5 @@
 <template>
   <div class="p-1 animate-spin">
-    <SvgIcon name="loading" class="w-2 h-2" />
+    <SvgIcon name="loading" class="w-full h-full" />
   </div>
 </template>
