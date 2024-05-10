@@ -1,6 +1,7 @@
 export const THEME_LIGHT = 'light'
 export const THEME_DARK = 'dark'
 export const THEME_SYSTEM = 'system'
+export const EMIT_CLICK = 'click'
 export const EMIT_UPDATE_MODELVALUE = 'update:modelValue'
 export const EMIT_SEARCH = 'search'
 export const EMIT_CLEAR = 'clear'

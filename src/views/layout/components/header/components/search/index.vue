@@ -47,7 +47,7 @@
       <div
         v-if="$slots.dropdown"
         v-show="isFocus"
-        class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute z-20 left-0 top-[56px] p-2 rounded border border-zinc-200 duration-200 hover:shadow-2xl dark:border-zinc-600"
+        class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute z-30 left-0 top-[56px] p-2 rounded border border-zinc-200 duration-200 hover:shadow-2xl dark:border-zinc-600"
       >
         <slot name="dropdown"></slot>
       </div>
