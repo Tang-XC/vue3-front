@@ -3,6 +3,7 @@
     <div class="relative w-full rounded cursor-zoom-in group">
       <img
         :src="data.photo"
+        v-lazy
         class="w-full rounded bg-transparent"
         :style="{
           height: (width / data.photoWidth) * data.photoHeight + 'px'
