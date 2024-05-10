@@ -105,6 +105,9 @@ onUpdated(() => {
 watch(active, (value) => {
   initFunc()
 })
+onMounted(() => {
+  initFunc()
+})
 </script>
 <style lang="scss" scope>
 .slider-item-active {

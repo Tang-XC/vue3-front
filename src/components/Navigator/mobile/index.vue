@@ -32,9 +32,10 @@
   </div>
 </template>
 <script setup>
-import { onUpdated, ref, watch } from 'vue'
+import { onUpdated, ref, watch, onMounted } from 'vue'
 import { useVModel, useScroll } from '@vueuse/core'
 import { EMIT_UPDATE_MODELVALUE } from '@/constants'
+import { isMobileDevice } from '@/utils/flexible'
 
 import _ from 'lodash'
 const props = defineProps({
@@ -85,7 +86,13 @@ const init = _.once(initFunc)
 onUpdated(() => {
   init()
 })
-watch(active, (value) => {
+watch(
+  () => active.value,
+  (value) => {
+    initFunc()
+  }
+)
+onMounted(() => {
   initFunc()
 })
 </script>

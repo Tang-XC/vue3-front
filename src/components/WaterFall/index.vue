@@ -117,6 +117,16 @@ const useItemLocation = () => {
   containerHeight.value = getMaxHeight(columnHeightObj.value)
 }
 
+//重新构建瀑布流
+const reset = () => {
+  setTimeout(() => {
+    useColumnWidth()
+    props.data.forEach((item) => {
+      item._style = null
+    })
+  }, 100)
+}
+
 /**
  * 从itemElement中抽离出所有的imgElements
  */
@@ -205,7 +215,6 @@ const increasingHeight = (index) => {
   const minHeightCloumn = getMinHeightColumn(columnHeightObj.value)
   columnHeightObj.value[minHeightCloumn] +=
     itemHeights.value[index] + props.rowSpacing
-  console.log(columnHeightObj.value)
 }
 watch(
   () => props.data,
@@ -228,6 +237,17 @@ watch(
   {
     deep: true,
     immediate: true
+  }
+)
+watch(
+  () => props.column,
+  () => {
+    if (props.picturePreReading) {
+      columnWidth.value = 0
+      reset()
+    } else {
+      reset()
+    }
   }
 )
 onMounted(() => {

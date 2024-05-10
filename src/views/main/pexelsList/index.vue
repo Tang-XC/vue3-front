@@ -5,10 +5,10 @@
       :data="pexelsList"
       nodeKey="id"
       :column="column"
-      :picturePreReading="true"
+      :picturePreReading="false"
     >
       <template v-slot="{ item, width }">
-        <PicCard :data="item" />
+        <PicCard :data="item" :width="width" />
       </template>
     </WaterFall>
   </div>

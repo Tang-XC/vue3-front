@@ -1,11 +1,11 @@
 import { PC_DEVICE_WIDTH } from '@/constants'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 const { width } = useWindowSize()
+
 export const isMobileDevice = computed(() => {
   return width.value < PC_DEVICE_WIDTH
-}).value
-
+})
 export const useREM = () => {
   const MAX_FONT_SIZE = 40
   document.addEventListener('DOMContentLoaded', () => {
