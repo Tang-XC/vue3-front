@@ -4,7 +4,7 @@
       <transition name="fade">
         <div
           v-if="isLoading"
-          class="w-full picCardImgCover bg-zinc-100"
+          class="w-full picCardImgCover bg-zinc-200 dark:bg-zinc-800 after:bg-gradient-to-r after:from-transparent after:via-zinc-50 after:to-transparent dark:after:bg-gradient-to-r dark:after:from-transparent dark:after:via-zinc-700 dark:after:to-transparent"
           :style="{
             height: (width / data.photoWidth) * data.photoHeight + 'px'
           }"
@@ -13,7 +13,7 @@
       <img
         ref="picCardImgRef"
         :src="data.photo"
-        class="w-full rounded bg-zinc-100"
+        class="w-full rounded bg-zinc-100 dark:bg-zinc-700"
         :style="{
           height: (width / data.photoWidth) * data.photoHeight + 'px'
         }"
@@ -116,14 +116,14 @@ onMounted(() => {
     width: 200%;
     height: 100%;
     z-index: 9;
-    background: linear-gradient(
+    /* background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,
       rgba(255, 255, 255, 1) 50%,
       rgba(255, 255, 255, 0) 100%
-    );
+    ); */
     transform: skew(-20deg);
-    animation: skeleton 1s ease-in-out infinite;
+    animation: skeleton 1.3s ease-in-out infinite;
   }
 }
 @keyframes skeleton {
@@ -131,7 +131,7 @@ onMounted(() => {
     left: -300%;
   }
   100% {
-    left: 100%;
+    left: 130%;
   }
 }
 
