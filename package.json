@@ -12,6 +12,7 @@
     "@vueuse/core": "^10.9.0",
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
+    "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
     "postcss": "^8.4.38",
     "sass": "^1.76.0",

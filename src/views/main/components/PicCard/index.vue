@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="flex justify-end">
-          <Button>
+          <Button @click="handleDownload(data.photo)">
             <SvgIcon name="download" class="w-3 h-3 fill-zinc-50" />
             下载
           </Button>
@@ -61,6 +61,7 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
+import { saveAs } from 'file-saver'
 
 const picCardImgRef = ref(null)
 const isLoading = ref(false)
@@ -74,6 +75,9 @@ defineProps({
     type: Number
   }
 })
+const handleDownload = (url) => {
+  saveAs(url)
+}
 const lazyLoad = (el) => {
   const temp = el.src
   el.src = ''

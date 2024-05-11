@@ -8,6 +8,10 @@ export const EMIT_CLEAR = 'clear'
 export const EMIT_INPUT = 'input'
 export const EMIT_BLUR = 'blur'
 export const EMIT_FOCUS = 'focus'
+export const TYPE_SUCCESS = 'success'
+export const TYPE_INFO = 'info'
+export const TYPE_WARNING = 'warning'
+export const TYPE_ERROR = 'error'
 export const POPOVER_POSITION = {
   TOPLEFT: 'top-left',
   TOPCENTER: 'top-center',

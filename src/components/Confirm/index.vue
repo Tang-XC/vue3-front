@@ -64,23 +64,18 @@ const duration = '0.5s'
 const close = () => {
   visible.value = false
   setTimeout(() => {
-    props.closeHandler && props.closeHandler()
+    props.closeHandler?.()
   }, parseInt(duration.replace('0.', '').replace('s', '') * 100))
 }
 const show = () => {
   visible.value = true
 }
 const onCancelClick = () => {
-  if (props.cancelHandler) {
-    props.cancelHandler()
-  }
-
+  props.cancelHandler?.()
   close()
 }
 const onConfirmClick = () => {
-  if (props.confirmHandler) {
-    props.confirmHandler()
-  }
+  props.confirmHandler?.()
   close()
 }
 onMounted(() => {
@@ -103,6 +98,7 @@ onMounted(() => {
 }
 .up-enter-from,
 .up-leave-to {
-  transform: translateY(-100%);
+  transform: translate(-50%, 20%);
+  opacity: 0;
 }
 </style>

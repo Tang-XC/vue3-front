@@ -6,7 +6,7 @@ export const confirm = (title, content, cancelText, confirmText) => {
       content = title
       title = ''
     }
-    const close = () => {
+    const closeHandler = () => {
       render(null, document.body)
     }
     const cancelHandler = () => {
@@ -22,7 +22,7 @@ export const confirm = (title, content, cancelText, confirmText) => {
       confirmText,
       cancelHandler,
       confirmHandler,
-      close
+      closeHandler
     })
     render(vnode, document.body)
   })
