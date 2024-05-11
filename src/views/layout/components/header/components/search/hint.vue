@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <ul>
       <li
         class="w-full text-zinc-500 py-0.5 hover:text-zinc-900 hover:bg-zinc-200 px-1 rounded cursor-pointer"

@@ -1,5 +1,7 @@
 <template>
-  <div class="h-full overflow-auto dark:bg-zinc-900">
+  <div
+    class="h-full overflow-auto dark:bg-zinc-900 scrollbar-thin scrollbar-thumb-transparent xl:scrollbar-thumb-zinc-200 xl:dark:scrollbar-thumb-zinc-900 scrollbar-track-transparent"
+  >
     <Navigator
       :type="isMobileDevice ? 'mobile' : 'pc'"
       :data="store.getters.categories"

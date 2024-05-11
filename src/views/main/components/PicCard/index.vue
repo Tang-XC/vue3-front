@@ -27,6 +27,7 @@
             <Button
               icon="fullscreen"
               class="bg-zinc-100 dark:bg-zinc-400"
+              @click="handleFullScreen"
             ></Button>
           </div>
           <div class="flex">
@@ -62,9 +63,11 @@
 import { onMounted, ref, watch } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 import { saveAs } from 'file-saver'
+import { useFullscreen } from '@vueuse/core'
 
 const picCardImgRef = ref(null)
 const isLoading = ref(false)
+const { enter } = useFullscreen(picCardImgRef)
 
 defineProps({
   data: {
@@ -77,6 +80,9 @@ defineProps({
 })
 const handleDownload = (url) => {
   saveAs(url)
+}
+const handleFullScreen = () => {
+  enter()
 }
 const lazyLoad = (el) => {
   const temp = el.src
