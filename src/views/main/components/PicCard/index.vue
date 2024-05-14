@@ -1,5 +1,9 @@
 <template>
-  <div class="bg-whtie dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
+  <div
+    ref="triggerRef"
+    class="bg-whtie dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1"
+    @click="isModalOpen = true"
+  >
     <div class="relative w-full rounded cursor-zoom-in group">
       <transition name="fade">
         <div
@@ -58,15 +62,22 @@
       </div>
     </div>
   </div>
+  <AnimModal v-model="isModalOpen" :triggerRef="triggerRef">
+    <Detail :data="data" />
+  </AnimModal>
 </template>
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 import { saveAs } from 'file-saver'
 import { useFullscreen } from '@vueuse/core'
+import AnimModal from '../AnimModal/index.vue'
+import Detail from '../Detail/index.vue'
 
 const picCardImgRef = ref(null)
 const isLoading = ref(false)
+const triggerRef = ref(null)
+const isModalOpen = ref(false)
 const { enter } = useFullscreen(picCardImgRef)
 
 defineProps({

@@ -9,7 +9,11 @@
         :picturePreReading="false"
       >
         <template v-slot="{ item, width }">
-          <PicCard :data="item" :width="width" />
+          <PicCard
+            :data="item"
+            :width="width"
+            @click="handlePicCardClick(item.id)"
+          />
         </template>
       </WaterFall>
     </InfiniteList>
