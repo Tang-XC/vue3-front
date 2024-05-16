@@ -16,6 +16,9 @@
     <div class="max-w-screen-xl mx-auto relative m-1 xl:mt-4">
       <PexelsList :column="isMobileDevice ? 2 : 5" />
     </div>
+    <div class="fixed bottom-6 m-auto left-0 right-0 w-[220px]">
+      <TriggerMenu v-if="isMobileDevice" :items="triggerItems" />
+    </div>
   </div>
   <PopUp v-model="showMore" position="top">
     <CategoryMenu
@@ -25,6 +28,11 @@
     />
   </PopUp>
 </template>
+<script>
+export default {
+  name: 'home'
+}
+</script>
 <script setup>
 import CategoryMenu from './components/CategoryMenu/index.vue'
 import { onMounted, ref, watch } from 'vue'
@@ -32,9 +40,26 @@ import { useStore } from 'vuex'
 import PexelsList from './pexelsList/index.vue'
 import { isMobileDevice } from '@/utils/flexible.js'
 const store = useStore()
-
 const showMore = ref(false)
 const activeCategory = ref(store.getters.currentCategory)
+const triggerItems = [
+  {
+    title: '首页',
+    icon: 'home-fill',
+    path: '/'
+  },
+  {
+    title: '上传',
+    icon: 'upload-fill',
+    path: '/upload'
+  },
+  {
+    title: '我的',
+    icon: 'personal-fill',
+    path: '/personal'
+  }
+]
+const counter = ref(0)
 
 const openMore = () => {
   showMore.value = true

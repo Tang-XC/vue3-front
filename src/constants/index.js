@@ -12,6 +12,9 @@ export const TYPE_SUCCESS = 'success'
 export const TYPE_INFO = 'info'
 export const TYPE_WARNING = 'warning'
 export const TYPE_ERROR = 'error'
+export const ROUTER_TYPE_NONE = 'none'
+export const ROUTER_TYPE_PUSH = 'push'
+export const ROUTER_TYPE_BACK = 'back'
 export const POPOVER_POSITION = {
   TOPLEFT: 'top-left',
   TOPCENTER: 'top-center',

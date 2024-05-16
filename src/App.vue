@@ -1,12 +1,24 @@
 <template>
   <div class="w-screen h-screen fixed top-0 left-0">
-    <router-view></router-view>
+    <TransitionRouterView
+      :routerType="$store.getters.routerType"
+      mainComponentName="home"
+    ></TransitionRouterView>
   </div>
 </template>
 <script setup>
-import { message } from '@/components/index'
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
+import { useStore } from 'vuex'
+import TransitionRouterView from './components/TransitionRouterView/index.vue'
+
+const store = useStore()
 onMounted(() => {
-  message('success', 'Welcom to imooc-front')
+  console.log(store.getters.routerType)
 })
+watch(
+  () => store.getters.routerType,
+  (newVal) => {
+    console.log(newVal)
+  }
+)
 </script>
