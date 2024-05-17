@@ -6,7 +6,7 @@ export default {
   history: (state) => state.search.history,
   currentSearch: (state) => state.search.currentSearch,
   routerType: (state) => {
-    if (!isMobileDevice) {
+    if (!isMobileDevice.value) {
       return 'none'
     }
     return state.app.routerType

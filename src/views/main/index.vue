@@ -19,14 +19,14 @@
     <div class="fixed bottom-6 m-auto left-0 right-0 w-[220px]">
       <TriggerMenu v-if="isMobileDevice" :items="triggerItems" />
     </div>
+    <PopUp v-model="showMore" position="top">
+      <CategoryMenu
+        :data="store.getters.categories"
+        @close="closeMore"
+        @onSelect="handleMenuSelect"
+      />
+    </PopUp>
   </div>
-  <PopUp v-model="showMore" position="top">
-    <CategoryMenu
-      :data="store.getters.categories"
-      @close="closeMore"
-      @onSelect="handleMenuSelect"
-    />
-  </PopUp>
 </template>
 <script>
 export default {
